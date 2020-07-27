@@ -1,3 +1,4 @@
+import {etch} from './etch'
 import { useState, useEffect } from 'react'
 
 // Helpers
@@ -75,12 +76,12 @@ export function useMountFetch(
         let client
         if (isInstagramUrl(url)) {
           const modifiedInstaUrl = `https://api.instagram.com/oembed/?url=${url}`
-          client = fetch(proxyUrl ? `${proxyUrl}/${modifiedInstaUrl}` : modifiedInstaUrl, { headers })
+          client = etch(proxyUrl ? `${proxyUrl}/${modifiedInstaUrl}` : modifiedInstaUrl, { headers })
         } else if (isTwitterUrl(url)) {
           const modifiedInstaUrl = `https://publish.twitter.com/oembed?url=${url}`
-          client = fetch(proxyUrl ? `${proxyUrl}/${modifiedInstaUrl}` : modifiedInstaUrl, { headers })
+          client = etch(proxyUrl ? `${proxyUrl}/${modifiedInstaUrl}` : modifiedInstaUrl, { headers })
         } else {
-          client = fetch(proxyUrl ? `${proxyUrl}/${url}` : url, { headers })
+          client = etch(proxyUrl ? `${proxyUrl}/${url}` : url, { headers })
         }
 
         const data = await ScraperWraper(url, client, defaultMedias)
