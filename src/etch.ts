@@ -1,4 +1,13 @@
-const electron = window.require ? window.require("electron") : {}
+
+declare var window: Window;
+declare global {
+  interface Window {
+    process: any;
+    require: any;
+  }
+}
+
+const electron = (window && window.require) ? window.require("electron") : {}
 
 export async function etch(url, config){
   const obj = {url, config}

@@ -1,4 +1,4 @@
-declare const _default: (url: string, httpClient: any, defaultMedia: string[]) => Promise<{
+declare const _default: (url: string, data: string, mimeType: string, defaultMedia: string[]) => Promise<{
     title: any;
     content: string;
     url: string;

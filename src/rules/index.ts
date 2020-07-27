@@ -19,11 +19,8 @@ import ScrapInstagram from './Instagram/ScrapInstagram'
 import ScrapBoardGameGeek from './BoardGameGeek/ScrapBoardGameGeek'
 import ScrapTwitter from './Twitter/ScrapTwitter'
 
-export default async (url: string, httpClient, defaultMedia: string[]) => {
-  if (!isEmpty(url)) {
-    const response = await httpClient
-    const mimeType = response.headers.get('content-type')
-    const data = await response.text()
+export default async (url: string, data: string, mimeType: string, defaultMedia: string[]) => {
+  if (!isEmpty(url)) {    
     const htmlDoc = new DOMParser().parseFromString(data, 'text/html')
     if (isVideo(mimeType)) {
       return await ScrapVideo(url, defaultMedia)

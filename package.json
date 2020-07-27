@@ -14,7 +14,8 @@
   "peerDependencies": {
     "prop-types": "*",
     "react": "*",
-    "react-dom": "*"
+    "react-dom": "*",
+    "electron": "*"
   },
   "typings": "src/lib/index.d.ts",
   "scripts": {
@@ -59,8 +60,5 @@
     "webpack-inline-svg-loader": "^0.1.1",
     "webpack-merge": "^4.2.1",
     "yarn": "^1.22.0"
-  },
-  "dependencies": {
-    "electron": "^9.1.1"
   }
 }

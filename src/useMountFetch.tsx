@@ -73,18 +73,18 @@ export function useMountFetch(
 
       try {
         // actual request to preview the link
-        let client
+        let res
         if (isInstagramUrl(url)) {
           const modifiedInstaUrl = `https://api.instagram.com/oembed/?url=${url}`
-          client = etch(proxyUrl ? `${proxyUrl}/${modifiedInstaUrl}` : modifiedInstaUrl, { headers })
+          res = await etch(proxyUrl ? `${proxyUrl}/${modifiedInstaUrl}` : modifiedInstaUrl, { headers })
         } else if (isTwitterUrl(url)) {
           const modifiedInstaUrl = `https://publish.twitter.com/oembed?url=${url}`
-          client = etch(proxyUrl ? `${proxyUrl}/${modifiedInstaUrl}` : modifiedInstaUrl, { headers })
+          res = await etch(proxyUrl ? `${proxyUrl}/${modifiedInstaUrl}` : modifiedInstaUrl, { headers })
         } else {
-          client = etch(proxyUrl ? `${proxyUrl}/${url}` : url, { headers })
+          res = await etch(proxyUrl ? `${proxyUrl}/${url}` : url, { headers })
         }
 
-        const data = await ScraperWraper(url, client, defaultMedias)
+        const data = await ScraperWraper(url, res.data, res.mimeType, defaultMedias)
         finalStateUpdate.response = data
 
         onSuccess && isMounted && onSuccess(data)

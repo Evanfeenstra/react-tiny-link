@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IReactTinyLinkProps } from './ReactTinyLinkTypes';
-export declare const ScrapperWraper: (url: string, httpClient: any, defaultMedia: string[]) => Promise<{
+export declare const ScrapperWraper: (url: string, data: string, mimeType: string, defaultMedia: string[]) => Promise<{
     title: any;
     content: string;
     url: string;
